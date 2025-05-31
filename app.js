@@ -11,6 +11,9 @@ app.use(express.json());
 
 app.use("/api", authRoutes);
 
+// Porta dinâmica para funcionar no Render
+const PORT = process.env.PORT || 3001;
+
 sequelize.authenticate()
   .then(() => {
     console.log("✅ Conectado ao banco com sucesso!");
@@ -18,8 +21,8 @@ sequelize.authenticate()
   })
   .then(() => {
     console.log("📦 Banco sincronizado com sucesso.");
-    app.listen(3001, () => {
-      console.log("🚀 Servidor rodando na porta 3001");
+    app.listen(PORT, () => {
+      console.log(`🚀 Servidor rodando na porta ${PORT}`);
     });
   })
   .catch((err) => {
