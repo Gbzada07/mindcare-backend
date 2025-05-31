@@ -1,0 +1,192 @@
+/* GERAL */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #c2f0f3, #fbd3e9);
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOPO */
+.topbar {
+  background: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.topbar .logo {
+  color: #00796b;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.topbar .search {
+  flex: 1;
+  margin: 0 2rem;
+}
+
+.topbar input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.topbar .icons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* CONTAINER */
+.container {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - 72px); /* altura da topbar */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* SIDEBAR ESQUERDA */
+.sidebar {
+  width: 240px;
+  background-color: #fff;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #555;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #f0f0ff;
+  color: #6c63ff;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.main {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.main h1 {
+  color: #00796b;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* CARDS DO MAIN */
+.main .card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: none;
+  flex: 1 1 300px;
+  min-width: 280px;
+  transition: all 0.3s ease;
+}
+
+.main .card:hover {
+  border-color: #6c63ff;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.1);
+  cursor: pointer;
+}
+
+/* BARRA DIREITA */
+.rightbar {
+  width: 260px;
+  padding: 2rem 1rem;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: none;
+  border-left: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* CARDS DA RIGHTBAR */
+.rightbar .card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.rightbar .card:hover {
+  border-color: #6c63ff;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.1);
+  cursor: pointer;
+}
+
+/* BOTÕES */
+.button {
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  background: #5a54e6;
+}
+
+/* RESPONSIVO - MOBILE */
+@media (max-width: 960px) {
+  .container {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .sidebar,
+  .rightbar {
+    width: 100%;
+    flex-direction: column;
+    overflow-x: visible;
+    margin: 0;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+}

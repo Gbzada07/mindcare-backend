@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindCare - Bem-Estar Mental</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* ... (mesmo CSS que você usou antes) ... */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #cbeef2, #e9d4f1);
+      color: #333;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #24B5AB;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: #6C63FF;
+    }
+
+    .login-btn {
+      text-decoration: none;
+      background: #6C63FF;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .login-btn:hover {
+      background: #574fd6;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .hero {
+      width: 100%;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-texto {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .hero-texto h1 {
+      font-size: 2.2rem;
+      color: #1c6159;
+    }
+
+    .hero-texto h1 span {
+      color: #6C63FF;
+    }
+
+    .hero-texto p {
+      margin: 1rem 0 2rem;
+      font-size: 1.05rem;
+      max-width: 500px;
+      color: #444;
+    }
+
+    .botoes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.3s, color 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .btn.primario {
+      background: #6C63FF;
+      color: #fff;
+    }
+
+    .btn.primario:hover {
+      background: #554de1;
+    }
+
+    .btn.secundario {
+      background: transparent;
+      color: #6C63FF;
+      border: 2px solid #6C63FF;
+    }
+
+    .btn.secundario:hover {
+      background: #f1f0ff;
+    }
+
+    .hero-imagem {
+      flex: 1;
+      min-width: 280px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-imagem img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      background-color: #f8f8f8;
+      color: #666;
+      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .hero-texto h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero-texto p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <nav class="navbar">
+        <div class="logo">MindCare</div>
+        <ul class="menu">
+          <li><a href="#solucao">Nossa Solução</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#avaliacao">Avaliação</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+        <!-- ✅ CORRIGIDO -->
+        <a href="login.html" class="login-btn">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-texto">
+            <h1>Bem-vindo ao <span>MindCare</span></h1>
+            <p>Sua jornada de bem-estar começa aqui. Avalie suas emoções, acompanhe seu progresso e fale com quem entende.</p>
+            <div class="botoes">
+              <!-- ✅ CORRIGIDO -->
+              <a href="cadastro.html" class="btn primario">Criar Conta</a>
+              <a href="#conheca" class="btn secundario">Conheça Mais</a>
+            </div>
+          </div>
+          <div class="hero-imagem">
+            <img src="img/transformada_sem_fundo.png" alt="Ilustração bem-estar" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 MindCare - Todos os direitos reservados.</p>
+    </footer>
+  </div>
+</body>
+</html>

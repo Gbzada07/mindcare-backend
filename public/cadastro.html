@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro - MindCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #b2f1f0, #f3cce5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+    .logo {
+      margin: 0;
+      color: #008080;
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+    .subtitulo {
+      margin: 0;
+      color: #666;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    .input-container {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .input-container input {
+      width: 100%;
+      padding: 0.75rem;
+      padding-right: 2.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .input-container .toggle-password {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: #666;
+    }
+    .btn-roxo {
+      background-color: #6c63ff;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      width: 100%;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-roxo:hover { background-color: #574fd6; }
+    .link-secundario {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .link-secundario a {
+      color: #6c63ff;
+      text-decoration: none;
+    }
+    .link-secundario a:hover { text-decoration: underline; }
+    @media (max-width: 480px) {
+      .form-container { padding: 1.5rem; }
+      .logo { font-size: 1.5rem; }
+      .input-container input, .btn-roxo { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1 class="logo">MindCare</h1>
+    <p class="subtitulo">BEM-ESTAR MENTAL</p>
+    <h2>Cadastro</h2>
+    <form id="formCadastro">
+      <div class="input-container">
+        <input type="text" name="nome" placeholder="Nome completo" required />
+      </div>
+      <div class="input-container">
+        <input type="email" name="email" placeholder="E-mail" required />
+      </div>
+      <div class="input-container">
+        <input type="password" name="senha" placeholder="Senha" id="senha" required />
+        <span class="toggle-password" onclick="togglePassword('senha')">👁️</span>
+      </div>
+      <div class="input-container">
+        <input type="password" placeholder="Confirme a senha" id="confirmar" required />
+        <span class="toggle-password" onclick="togglePassword('confirmar')">👁️</span>
+      </div>
+      <button type="submit" class="btn-roxo">Cadastrar</button>
+    </form>
+    <p class="link-secundario">Já tem conta? <a href="login.html">Faça login</a></p>
+  </div>
+
+  <script>
+    const API_URL = "postgresql://gbzada:YsRdWFZmIfD7WVtCbxEqQvPecVMERxZR@dpg-d0tjsubipnbc73ck4cbg-a.oregon-postgres.render.com/mindcare_db_fr5j";
+
+    function togglePassword(id) {
+      const field = document.getElementById(id);
+      field.type = field.type === 'password' ? 'text' : 'password';
+    }
+
+    document.getElementById("formCadastro").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const nome = this.nome.value;
+      const email = this.email.value;
+      const senha = this.senha.value;
+      const confirmar = document.getElementById("confirmar").value;
+
+      if (senha !== confirmar) {
+        alert("As senhas não coincidem.");
+        return;
+      }
+
+      try {
+        const resposta = await fetch(`${API_URL}/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nome, email, senha })
+        });
+
+        const dados = await resposta.json();
+        alert(dados.message || dados.error);
+
+        if (resposta.ok) {
+          window.location.href = "login.html";
+        }
+      } catch (err) {
+        alert("Erro ao cadastrar. Verifique a conexão com o servidor.");
+      }
+    });
+  </script>
+</body>
+</html>
