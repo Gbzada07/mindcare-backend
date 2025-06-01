@@ -10,11 +10,8 @@ router.post("/login", login);
 
 // Rota protegida: retorna dados do usuário autenticado
 router.get("/user", authMiddleware, (req, res) => {
-  res.json({
-    id: req.user.id,
-    nome: req.user.nome,
-    email: req.user.email,
-  });
+  const { id, nome, email } = req.user;
+  res.json({ id, nome, email });
 });
 
 module.exports = router;

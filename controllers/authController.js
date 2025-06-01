@@ -16,7 +16,10 @@ const register = async (req, res) => {
 
     res.status(201).json({ message: "Usuário criado com sucesso!" });
   } catch (error) {
-    res.status(500).json({ error: "Erro no cadastro", details: error.message });
+    res.status(500).json({
+      error: "Erro no cadastro",
+      details: error.message
+    });
   }
 };
 
@@ -36,7 +39,16 @@ const login = async (req, res) => {
       return res.status(401).json({ error: "Senha incorreta" });
     }
 
-    const token = jwt.sign({ id: usuario.id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+    // Garante que o token tenha id, nome, email
+    const token = jwt.sign(
+      {
+        id: usuario.id,
+        nome: usuario.nome,
+        email: usuario.email
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
 
     res.json({
       message: "Login realizado com sucesso",
@@ -48,7 +60,10 @@ const login = async (req, res) => {
       }
     });
   } catch (error) {
-    res.status(500).json({ error: "Erro no login", details: error.message });
+    res.status(500).json({
+      error: "Erro no login",
+      details: error.message
+    });
   }
 };
 
