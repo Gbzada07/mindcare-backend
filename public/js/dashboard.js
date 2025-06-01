@@ -1,5 +1,5 @@
-// URL base da API (ajuste se necessário)
-const API_URL = "https://mindcare-backend.onrender.com/api";
+// URL base da API 
+const API_URL = "https://mindcare-backend-bq21.onrender.com/api";
 
 // Função para carregar dados do usuário
 async function carregarUsuario() {
