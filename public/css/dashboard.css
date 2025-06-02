@@ -1,4 +1,4 @@
-/* GERAL */
+/* GERAL */ 
 html, body {
   width: 100%;
   height: 100%;
@@ -12,6 +12,7 @@ body {
   background: linear-gradient(to right, #c2f0f3, #fbd3e9);
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 /* TOPO */
@@ -54,6 +55,10 @@ body {
   top: 0;
   left: 0;
   right: 0;
+}
+
+.topbar.fixed ~ .container {
+  padding-top: 72px;
 }
 
 /* HAMBURGER */
@@ -114,9 +119,8 @@ body {
   margin-top: 0;
 }
 
-/* Quando a topbar está fixa, empurra a sidebar para baixo */
 .topbar.fixed ~ .container .sidebar {
-  margin-top: 72px;
+  margin-top: 0;
 }
 
 .sidebar a {
@@ -140,6 +144,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .main h1 {
@@ -154,8 +159,8 @@ body {
   gap: 1.5rem;
 }
 
-/* CARDS */
-.main .card, .rightbar .card {
+.main .card,
+.rightbar .card {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 16px;
@@ -164,7 +169,8 @@ body {
   min-width: 280px;
   transition: all 0.3s ease;
 }
-.main .card:hover, .rightbar .card:hover {
+.main .card:hover,
+.rightbar .card:hover {
   border-color: #6c63ff;
   transform: scale(1.02);
   box-shadow: 0 4px 12px rgba(108, 99, 255, 0.1);
@@ -198,6 +204,50 @@ body {
   background: #5a54e6;
 }
 
+/* AUTOAVALIAÇÃO */
+.autoavaliacao-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 2rem auto;
+  transition: all 0.3s ease-in-out;
+}
+.autoavaliacao-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+.autoavaliacao-card p {
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+.autoavaliacao-card label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.autoavaliacao-card select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Botão de voltar na autoavaliação */
+.autoavaliacao-card #voltarBtn {
+  display: block;
+  margin: 2rem auto 0 auto;
+  background-color: #ccc;
+  color: #333;
+}
+.autoavaliacao-card #voltarBtn:hover {
+  background-color: #bbb;
+  color: #000;
+}
+
 /* RESPONSIVO */
 @media (max-width: 960px) {
   .container {
@@ -211,19 +261,19 @@ body {
   }
 
   .sidebar {
-    position: fixed;
+    position: absolute;
     top: 72px;
-    left: -100%;
+    left: 0;
     height: calc(100vh - 72px);
     width: 240px;
     overflow-y: auto;
-    transform: translateX(0);
-    transition: left 0.3s ease;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
     margin-top: 0 !important;
   }
 
   .sidebar.active {
-    left: 0;
+    transform: translateX(0);
   }
 
   .main {
@@ -239,5 +289,20 @@ body {
 
   .cards {
     flex-direction: column;
+  }
+
+  .autoavaliacao-card {
+    padding: 1.5rem 1rem;
+    margin: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .autoavaliacao-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .autoavaliacao-card label,
+  .autoavaliacao-card select {
+    font-size: 0.95rem;
   }
 }

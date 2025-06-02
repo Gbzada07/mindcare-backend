@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,19 +7,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/dashboard.css" />
 </head>
-
 <body>
-
   <header class="topbar">
     <div class="logo">MindCare</div>
-
-    <!-- Botão hambúrguer -->
     <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
-
     <div class="search">
       <input type="text" placeholder="Pesquisar..." aria-label="Pesquisar">
     </div>
@@ -32,11 +24,11 @@
 
   <div class="container">
     <aside class="sidebar" id="sidebar">
-      <a href="#"><span>🧠</span> Autoavaliação</a>
-      <a href="#"><span>📊</span> Histórico</a>
-      <a href="#"><span>👩‍⚕️</span> Especialista</a>
-      <a href="#"><span>⚙️</span> Configurações</a>
-      <a href="#"><span>🔒</span> Sair</a>
+      <a href="avaliacao.html"><span>🧠</span> Autoavaliação</a>
+      <a href="historico.html"><span>📊</span> Histórico</a>
+      <a href="especialista.html"><span>👩‍⚕</span> Especialista</a>
+      <a href="configuracoes.html"><span>⚙</span> Configurações</a>
+      <a href="logout.html"><span>🔒</span> Sair</a>
     </aside>
 
     <main class="main">
@@ -45,12 +37,12 @@
         <div class="card">
           <h2>Autoavaliação Rápida</h2>
           <p>Responda 3 perguntas e veja como está seu humor agora.</p>
-          <button class="button">Começar</button>
+          <a href="avaliacao.html"><button class="button">Começar</button></a>
         </div>
         <div class="card">
           <h2>Gráfico de Humor</h2>
           <p>Resumo emocional da semana com base em suas respostas.</p>
-          <button class="button">Visualizar</button>
+          <a href="historico.html"><button class="button">Visualizar</button></a>
         </div>
         <div class="card">
           <h2>Metas da Semana</h2>
@@ -62,21 +54,12 @@
 
     <aside class="rightbar">
       <div style="text-align: center; margin-bottom: 1rem;">
-        <button style="
-          background: #6c63ff;
-          color: #fff;
-          border: none;
-          padding: 0.6rem 1.2rem;
-          border-radius: 12px;
-          font-weight: 600;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-          cursor: pointer;
-          transition: transform 0.2s ease;
-        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <button style="background: #6c63ff; color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 12px;
+          font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s ease;"
+          onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           💡 Dica do Dia
         </button>
       </div>
-
       <div class="card">
         <h3>Frase do Dia</h3>
         <p>"Você é mais forte do que pensa."</p>
@@ -95,7 +78,6 @@
     </aside>
   </div>
 
-  <!-- SVG decorativo no fundo -->
   <svg style="position: absolute; right: 0; top: 60px; z-index: -1;" width="300" height="300" viewBox="0 0 600 600"
     fill="none" xmlns="http://www.w3.org/2000/svg">
     <g filter="url(#blur)">
@@ -103,15 +85,10 @@
         d="M300,0 C400,100 500,100 600,300 C500,500 400,500 300,600 C200,500 100,500 0,300 C100,100 200,100 300,0 Z" />
     </g>
     <defs>
-      <filter id="blur">
-        <feGaussianBlur stdDeviation="40" />
-      </filter>
+      <filter id="blur"><feGaussianBlur stdDeviation="40" /></filter>
     </defs>
   </svg>
 
   <script src="js/dashboard.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </body>
-
 </html>
