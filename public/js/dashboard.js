@@ -321,6 +321,63 @@ function setupEspecialistaMenu() {
   });
 }
 
+// Configurações no menu
+function setupConfiguracoesMenu() {
+  const links = document.querySelectorAll(".sidebar a");
+  const main = document.querySelector(".main");
+
+  links.forEach(link => {
+    if (link.innerText.trim().includes("Configurações")) {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        main.innerHTML = `
+          <div class="configuracoes-card">
+            <h2>⚙️ Configurações do Usuário</h2>
+
+            <label for="tema">Tema</label>
+            <select id="tema">
+              <option value="claro">Claro</option>
+              <option value="escuro">Escuro</option>
+            </select>
+
+            <label for="frequencia">Frequência de Alertas (em dias)</label>
+            <input type="number" id="frequencia" placeholder="Ex: 7">
+
+            <label for="limite">Limite de Pontuação de Risco</label>
+            <input type="number" id="limite" placeholder="Ex: 60">
+
+            <button class="button" id="salvarConfiguracoesBtn">💾 Salvar Configurações</button>
+          </div>
+        `;
+
+        const salvarBtn = document.getElementById("salvarConfiguracoesBtn");
+        salvarBtn.addEventListener("click", () => {
+          const tema = document.getElementById("tema").value;
+          const frequencia = document.getElementById("frequencia").value;
+          const limite = document.getElementById("limite").value;
+
+          const configuracoes = {
+            tema,
+            frequencia: Number(frequencia),
+            limite: Number(limite),
+          };
+
+          localStorage.setItem("configuracoes", JSON.stringify(configuracoes));
+          alert("Configurações salvas com sucesso!");
+        });
+
+        const salvas = JSON.parse(localStorage.getItem("configuracoes"));
+        if (salvas) {
+          document.getElementById("tema").value = salvas.tema || "claro";
+          document.getElementById("frequencia").value = salvas.frequencia || "";
+          document.getElementById("limite").value = salvas.limite || "";
+        }
+      });
+    }
+  });
+}
+
 // Inicialização
 document.addEventListener("DOMContentLoaded", () => {
   carregarUsuario();
@@ -329,5 +386,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupEspecialistaBtn();
   setupAutoavaliacaoMenu();
   setupHistoricoMenu();
-  setupEspecialistaMenu(); // novo menu lateral
+  setupEspecialistaMenu();
+  setupConfiguracoesMenu();
 });
